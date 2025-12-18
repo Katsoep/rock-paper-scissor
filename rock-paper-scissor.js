@@ -25,14 +25,30 @@ function getComputerChoice() {
 // Let human choice 
 let humanChoice;
 function getHumanChoice() {
-    // Create function getHumanChoice
+// Create function getHumanChoice
 //    prompt human choice (assuming the prompt is always valid)
 //    return humans choice
+
+
+
     let humanChoice = prompt("Rock paper or scissor?");
-    console.log(humanChoice);
-    return humanChoice;
+     console.log(humanChoice);
+    // check if humanChoice is valid answer before you return it
+    if (humanChoice === "Rock" || humanChoice === "Paper" || humanChoice === "Scissor"){
+        console.log(humanChoice);
+        return humanChoice;
+    }
+    else {
+        alert("Invalid choice, try again")
+            //This causes the humanChoice to be the first one entered, not the correct one
+        // getHumanChoice();
+        // return humanChoice;
+    }
 
 }
+
+let humanScore = 0;
+let computerScore = 0;
 
 console.log(getComputerChoice())
 console.log(getHumanChoice())
