@@ -1,8 +1,8 @@
 console.log("Hello :3")
 function getComputerChoice() {
 
-    let computerChoice;
-    switch(Math.floor(Math.random() * 3) + 1){
+    let computerChoice = Math.floor(Math.random() * 3) + 1;
+    switch(computerChoice){
         case 1 :
             computerChoice = "rock";
             break;
@@ -13,21 +13,20 @@ function getComputerChoice() {
             computerChoice = "scissor";
             break;
     }
-    console.log(computerChoice);
+    /* console.log(computerChoice); */
     return computerChoice;
 }
 
 function getHumanChoice() {
 
     let humanChoice = prompt("Rock paper or scissor?").toLowerCase();
-    // check if humanChoice is valid answer before you return it
 
     if (humanChoice === "rock" || humanChoice === "paper" || humanChoice === "scissor"){
-        console.log(humanChoice);
+       /*  console.log(humanChoice); */
         return humanChoice;
     }
     else {
-        alert("Invalid choice, try again")
+        alert("Invalid choice")
     }
 }
 
@@ -93,13 +92,15 @@ function playRound(humanChoice, computerChoice){
 
 function playGame(){
 
-    let computerSelect = getComputerChoice();
-    let humanSelect = getHumanChoice();
-
     for (let roundCounter = 1; roundCounter <= 5; roundCounter++){
-        console.log("round " + roundCounter);
-        playRound(humanSelect, computerSelect);
 
+        console.log("round " + roundCounter);
+        const computerSelect = getComputerChoice();
+        const humanSelect = getHumanChoice();
+        console.log("Computer chooses: " + computerSelect);
+        console.log("Human chooses: " + humanSelect);
+        playRound(humanSelect, computerSelect);
+        
         if(roundCounter === 5){
         console.log("Final score: Human: " + humanScore + " - Computer: " + computerScore);
         }
