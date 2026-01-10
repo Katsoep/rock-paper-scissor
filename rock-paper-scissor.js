@@ -1,4 +1,32 @@
 console.log("Hello :3")
+
+let humanScore = 0;
+let computerScore = 0;
+let score = "humans: " + humanScore + " vs computer: " + computerScore; 
+
+//NEW
+const body = document.querySelector("body");
+
+const btnRock = document.querySelector("#btnRock");
+const btnPaper = document.querySelector("#btnPaper");
+const btnScissor = document.querySelector("#btnScissor");
+
+
+btnRock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice())
+});
+btnPaper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice())
+});
+btnScissor.addEventListener("click", () => {
+    playRound("scissor", getComputerChoice())
+});
+
+const scoreBoard = document.createElement("div");
+scoreBoard.style.backgroundColor = "Black";
+//scoreBoard.textContent(score);
+body.appendChild(scoreBoard)
+
 function getComputerChoice() {
 
     let computerChoice = Math.floor(Math.random() * 3) + 1;
@@ -30,9 +58,7 @@ function getHumanChoice() {
     }
 }
 
-let humanScore = 0;
-let computerScore = 0;
-let score = "humans: " + humanScore + " vs computer: " + computerScore; 
+
 
 function playRound(humanChoice, computerChoice){
    
@@ -90,21 +116,22 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-function playGame(){
+// //OLD CONSOLE VERSION
+// function playGame(){
 
-    for (let roundCounter = 1; roundCounter <= 5; roundCounter++){
+//     for (let roundCounter = 1; roundCounter <= 5; roundCounter++){
 
-        console.log("round " + roundCounter);
-        const computerSelect = getComputerChoice();
-        const humanSelect = getHumanChoice();
-        console.log("Computer chooses: " + computerSelect);
-        console.log("Human chooses: " + humanSelect);
-        playRound(humanSelect, computerSelect);
+//         console.log("round " + roundCounter);
+//         const computerSelect = getComputerChoice();
+//         const humanSelect = getHumanChoice();
+//         console.log("Computer chooses: " + computerSelect);
+//         console.log("Human chooses: " + humanSelect);
+//         playRound(humanSelect, computerSelect);
         
-        if(roundCounter === 5){
-        console.log("Final score: Human: " + humanScore + " - Computer: " + computerScore);
-        }
-    }
-}
+//         if(roundCounter === 5){
+//         console.log("Final score: Human: " + humanScore + " - Computer: " + computerScore);
+//         }
+//     }
+// }
 
-playGame();
+// playGame();
