@@ -1,16 +1,14 @@
-console.log("Hello :3")
-
 let humanScore = 0;
 let computerScore = 0;
 let score = "humans: " + humanScore + " vs computer: " + computerScore; 
 
 //NEW
-const body = document.querySelector("body");
-
 const btnRock = document.querySelector("#btnRock");
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissor = document.querySelector("#btnScissor");
-
+const computerChoiceText = document.querySelector(".computersChoice");
+const scoreText = document.querySelector(".score");
+const announcement = document.querySelector(".ann");
 
 btnRock.addEventListener("click", () => {
     playRound("rock", getComputerChoice())
@@ -22,43 +20,25 @@ btnScissor.addEventListener("click", () => {
     playRound("scissor", getComputerChoice())
 });
 
-const scoreBoard = document.createElement("div");
-scoreBoard.style.backgroundColor = "Black";
-//scoreBoard.textContent(score);
-body.appendChild(scoreBoard)
-
 function getComputerChoice() {
 
     let computerChoice = Math.floor(Math.random() * 3) + 1;
     switch(computerChoice){
         case 1 :
             computerChoice = "rock";
+            computerChoiceText.textContent = "computers choice: Rock!";
             break;
         case 2 :
             computerChoice = "paper";
+            computerChoiceText.textContent = "computers choice: Paper!";
             break;
         case 3 :
             computerChoice = "scissor";
+            computerChoiceText.textContent = "computers choice: Scissor!";
             break;
     }
-    /* console.log(computerChoice); */
     return computerChoice;
 }
-
-function getHumanChoice() {
-
-    let humanChoice = prompt("Rock paper or scissor?").toLowerCase();
-
-    if (humanChoice === "rock" || humanChoice === "paper" || humanChoice === "scissor"){
-       /*  console.log(humanChoice); */
-        return humanChoice;
-    }
-    else {
-        alert("Invalid choice")
-    }
-}
-
-
 
 function playRound(humanChoice, computerChoice){
    
@@ -67,12 +47,14 @@ function playRound(humanChoice, computerChoice){
         if (humanChoice === "rock"){
             if(computerChoice === "scissor"){
                 humanScore++;
-                console.log("Human wins " + humanScore)
+                announcement.textContent = "Human wins";
+                scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
                 return;
             }
             else if(computerChoice === "paper"){
                 computerScore++;
-                console.log("Computer wins " + computerScore)
+                announcement.textContent = "Computer wins";
+                scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
                 return;
             }
             else{
@@ -83,12 +65,14 @@ function playRound(humanChoice, computerChoice){
         if (humanChoice === "paper"){
             if(computerChoice === "rock"){
                 humanScore++;
-                console.log("Human wins " + humanScore)
+                announcement.textContent = "Human wins";
+                scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
                 return;
             }
             else if(computerChoice === "scissor"){
                 computerScore++;
-                console.log("Computer wins " + computerScore)
+                announcement.textContent = "Computer wins";
+                scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
                 return;
             } else {
                 alert("something went wrong");
@@ -98,12 +82,14 @@ function playRound(humanChoice, computerChoice){
         if (humanChoice === "scissor"){
             if(computerChoice === "paper"){
                 humanScore++;
-                console.log("Human wins " + humanScore)
+                announcement.textContent = "Human wins";
+                scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
                 return;
             }
             else if(computerChoice === "rock"){
                 computerScore++;
-                console.log("Computer wins " + computerScore)
+                announcement.textContent = "Computer wins";
+                scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
                 return;
             } else {
                 alert("something went wrong");
@@ -111,7 +97,7 @@ function playRound(humanChoice, computerChoice){
             }
         }
     } else {
-        console.log("It's a tie");
+        announcement.textContent = "It's a tie";
         return;
     }
 }
