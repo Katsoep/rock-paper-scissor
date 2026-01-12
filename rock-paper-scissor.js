@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+let roundCounter = 0;
 let score = "humans: " + humanScore + " vs computer: " + computerScore; 
 
 //NEW
@@ -42,6 +43,8 @@ function getComputerChoice() {
 
 function playRound(humanChoice, computerChoice){
    
+if (roundCounter <= 5) countRounds();
+//(roundCounter < 5) ? countRounds() : ResetGame();
     if(humanChoice !== computerChoice){
 
         if (humanChoice === "rock"){
@@ -49,12 +52,14 @@ function playRound(humanChoice, computerChoice){
                 humanScore++;
                 announcement.textContent = "Human wins";
                 scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
+                if (roundCounter === 5) ResetGame();
                 return;
             }
             else if(computerChoice === "paper"){
                 computerScore++;
                 announcement.textContent = "Computer wins";
                 scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
+                if (roundCounter === 5) ResetGame();
                 return;
             }
             else{
@@ -67,12 +72,14 @@ function playRound(humanChoice, computerChoice){
                 humanScore++;
                 announcement.textContent = "Human wins";
                 scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
+                if (roundCounter === 5) ResetGame();
                 return;
             }
             else if(computerChoice === "scissor"){
                 computerScore++;
                 announcement.textContent = "Computer wins";
                 scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
+                if (roundCounter === 5) ResetGame();
                 return;
             } else {
                 alert("something went wrong");
@@ -84,12 +91,14 @@ function playRound(humanChoice, computerChoice){
                 humanScore++;
                 announcement.textContent = "Human wins";
                 scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
+                if (roundCounter === 5) ResetGame();return;
                 return;
             }
             else if(computerChoice === "rock"){
                 computerScore++;
                 announcement.textContent = "Computer wins";
                 scoreText.textContent = ("humans: " + humanScore + " vs computer: " + computerScore);
+                if (roundCounter === 5) ResetGame();return;
                 return;
             } else {
                 alert("something went wrong");
@@ -98,26 +107,28 @@ function playRound(humanChoice, computerChoice){
         }
     } else {
         announcement.textContent = "It's a tie";
+        if (roundCounter === 5) ResetGame();return;
         return;
     }
 }
 
-// //OLD CONSOLE VERSION
-// function playGame(){
+function ResetGame(){
+ 
+    if(humanScore < computerScore) alert("computer wins\nhumans: " + humanScore + " vs computer: " + computerScore);
+    if(humanScore > computerScore) alert("human wins\nhumans: " + humanScore + " vs computer: " + computerScore);
+    if(humanScore === computerScore) alert("It's a tie!\nhumans: " + humanScore + " vs computer: " + computerScore);
+    announcement.textContent = "Who will win?";
+    scoreText.textContent = "humans: 0 vs computer: 0";
+    computerChoiceText.textContent = "computers choice:";
+    humanScore = 0;
+    computerScore = 0;
+    //ask to play another game?
+    roundCounter = 0;
+}
 
-//     for (let roundCounter = 1; roundCounter <= 5; roundCounter++){
+function countRounds(){
+    roundCounter++
+    alert("Round " + roundCounter);
+}
 
-//         console.log("round " + roundCounter);
-//         const computerSelect = getComputerChoice();
-//         const humanSelect = getHumanChoice();
-//         console.log("Computer chooses: " + computerSelect);
-//         console.log("Human chooses: " + humanSelect);
-//         playRound(humanSelect, computerSelect);
-        
-//         if(roundCounter === 5){
-//         console.log("Final score: Human: " + humanScore + " - Computer: " + computerScore);
-//         }
-//     }
-// }
-
-// playGame();
+//give round = playround = finish up round
