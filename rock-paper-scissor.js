@@ -7,9 +7,10 @@ let score = "humans: " + humanScore + " vs computer: " + computerScore;
 const btnRock = document.querySelector("#btnRock");
 const btnPaper = document.querySelector("#btnPaper");
 const btnScissor = document.querySelector("#btnScissor");
-const computerChoiceText = document.querySelector(".computersChoice");
+const computerChoiceText = document.querySelector(".computers-choice");
 const scoreText = document.querySelector(".score");
 const announcement = document.querySelector(".ann");
+const subtitle = document.querySelector(".subtitle");
 
 btnRock.addEventListener("click", () => {
     playRound("rock", getComputerChoice())
@@ -27,15 +28,15 @@ function getComputerChoice() {
     switch(computerChoice){
         case 1 :
             computerChoice = "rock";
-            computerChoiceText.textContent = "computers choice: Rock!";
+            computerChoiceText.textContent = "computers says \nRock!";
             break;
         case 2 :
             computerChoice = "paper";
-            computerChoiceText.textContent = "computers choice: Paper!";
+            computerChoiceText.textContent = "computers says \nPaper!";
             break;
         case 3 :
             computerChoice = "scissor";
-            computerChoiceText.textContent = "computers choice: Scissor!";
+            computerChoiceText.textContent = "computers says \nScissor!";
             break;
     }
     return computerChoice;
@@ -44,7 +45,6 @@ function getComputerChoice() {
 function playRound(humanChoice, computerChoice){
    
 if (roundCounter <= 5) countRounds();
-//(roundCounter < 5) ? countRounds() : ResetGame();
     if(humanChoice !== computerChoice){
 
         if (humanChoice === "rock"){
@@ -114,12 +114,15 @@ if (roundCounter <= 5) countRounds();
 
 function ResetGame(){
  
-    if(humanScore < computerScore) alert("computer wins\nhumans: " + humanScore + " vs computer: " + computerScore);
-    if(humanScore > computerScore) alert("human wins\nhumans: " + humanScore + " vs computer: " + computerScore);
-    if(humanScore === computerScore) alert("It's a tie!\nhumans: " + humanScore + " vs computer: " + computerScore);
-    announcement.textContent = "Who will win?";
+    if(humanScore < computerScore)  subtitle.textContent = 
+    ("computer wins\nhumans: " + humanScore + " - computer: " + computerScore);
+    if(humanScore > computerScore)  subtitle.textContent = 
+    ("human wins\nhumans: " + humanScore + " - computer: " + computerScore);
+    if(humanScore === computerScore) subtitle.textContent = 
+    ("It's a tie!\nhumans: " + humanScore + " - computer: " + computerScore);
+    announcement.textContent = "Go again?";
     scoreText.textContent = "humans: 0 vs computer: 0";
-    computerChoiceText.textContent = "computers choice:";
+    computerChoiceText.textContent = "computers choice";
     humanScore = 0;
     computerScore = 0;
     //ask to play another game?
@@ -128,7 +131,7 @@ function ResetGame(){
 
 function countRounds(){
     roundCounter++
-    alert("Round " + roundCounter);
+    subtitle.textContent = ("Round " + roundCounter);
 }
 
 //give round = playround = finish up round

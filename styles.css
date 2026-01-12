@@ -1,0 +1,51 @@
+div {
+    font-size: 14px;
+    font-weight: 100;
+
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5em;
+    margin-left: 10em;
+    margin-right: 10em;
+    gap: 20px;
+}
+.title{
+    display: flex;
+    justify-content:space-around;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 50px;
+    gap: 20px;  
+}
+.score{
+    font-size: 30px;
+    font-weight: 500;
+}
+.part-one {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 10px;
+}
+.subtitle{
+    font-size: 20px;
+    font-style: italic;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+button {
+    width: 200px;
+    height: 200px;
+    font-size: 25px;
+}
+.computers-choice{
+    font-size: 20px;
+    font-style: italic;;
+}
